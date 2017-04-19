@@ -1,6 +1,8 @@
 package com.gebeliktakibi;
 
+import android.app.IntentService;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -70,8 +72,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.dismiss();
                         if(task.isSuccessful()){
+
                             Toast.makeText(MainActivity.this,"Kayıt başarılı anne adayımız hoşgeldiniz :)",Toast.LENGTH_SHORT).show();
+
                         }
                         else{
                             Toast.makeText(MainActivity.this,"Kayıt olamadınız, tekrar deneyin :(",Toast.LENGTH_SHORT).show();
@@ -88,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             registerUser();
         }
         if(v==textViewSignin){
-            //...
+            startActivity(new Intent(this,LoginActivity.class));
         }
 
     }

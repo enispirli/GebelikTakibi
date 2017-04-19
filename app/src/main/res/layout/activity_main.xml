@@ -52,7 +52,8 @@
             android:text="Already Registered? Sign in here"
             android:id="@+id/textViewSignin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="onClick" />
 
     </LinearLayout>
 </RelativeLayout>
