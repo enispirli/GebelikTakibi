@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "788970979941",
+    "firebase_url": "https://gebeliktakibi-4c8bb.firebaseio.com",
+    "project_id": "gebeliktakibi-4c8bb",
+    "storage_bucket": "gebeliktakibi-4c8bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788970979941:android:4c92157248150f2d",
+        "android_client_info": {
+          "package_name": "com.gebeliktakibi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788970979941-8pc2hatr7nde4t9q5prfgldm3g5rnm71.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6IQIVbplwLI4GumXdnilrb7dxweg_T4s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
