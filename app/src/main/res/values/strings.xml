@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GebelikTakibi</string>
+    <string name="facebook_app_id">243464276121339</string>
+    <string name="fb_login_protocol_scheme">fb243464276121339</string>
+    <string name="cancel_login" />
+    <string name="error_login" />
 </resources>

@@ -5,13 +5,109 @@
     android:orientation="vertical"
     android:background="#FFFFFF" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:text="İkinci Fragment"
-        android:textSize="20sp"/>
+        android:layout_centerHorizontal="true"
+        android:background="#ffeee7">
 
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Words"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textColor="#e79d34"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#e79d34"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"></LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/textViewAdjectiveGelen"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:textSize="23dp"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:textColor="#e79d34" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Meaning"
+            android:id="@+id/textView3"
+            android:layout_marginBottom="5dp"
+            android:textColor="#e79d34"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:layout_marginTop="50dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#e79d34"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"></LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/textViewAdjectiveAnlami"
+            android:layout_marginBottom="5dp"
+            android:textSize="23dp"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:textColor="#e79d34" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:gravity="bottom|center">
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/buttonAdjectiveOnceki"
+
+                android:layout_marginBottom="20dp"
+                android:onClick="onClick" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/buttonAdjectiveSonraki"
+
+                android:layout_marginLeft="70dp"
+                android:layout_marginBottom="20dp"
+                android:onClick="onClick" />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

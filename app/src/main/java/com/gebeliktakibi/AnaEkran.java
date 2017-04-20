@@ -1,10 +1,12 @@
 package com.gebeliktakibi;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
 public class AnaEkran extends AppCompatActivity implements ActionBar.TabListener {
@@ -14,6 +16,8 @@ public class AnaEkran extends AppCompatActivity implements ActionBar.TabListener
     private Menu optionsMenu;
     private ViewPager viewPager;
     private TabsPager adapter;
+    private TabLayout tabLayout;
+    private Toolbar toolbar;
     // Tab başlıkları
     private String[] tabs = {"Birinci", "İkinci", "Üçüncü"};
 
@@ -22,11 +26,16 @@ public class AnaEkran extends AppCompatActivity implements ActionBar.TabListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ana_ekran);
 
+        toolbar=(Toolbar)findViewById(R.id.toolBar);
+
+        getSupportActionBar().hide();
         //ACTİON BAR İŞLEMLERİ
-        actionBar = getSupportActionBar();
+        //actionBar = getSupportActionBar();
 
         // Action Bar Başlığı saklar
-        actionBar.setDisplayShowTitleEnabled(false);
+       //actionBar.setDisplayShowTitleEnabled(false);
+
+        tabLayout = (TabLayout) findViewById(R.id.tablayout);
 
 
         //TAB ve SWIPE İŞLEMLERİ
@@ -35,15 +44,19 @@ public class AnaEkran extends AppCompatActivity implements ActionBar.TabListener
         adapter = new TabsPager(getSupportFragmentManager());//TabsPager objesi oluşturuyoruz
 
         viewPager.setAdapter(adapter); //pager ımızı oluşturduğumuz objeye bağlıyoruz.
-        actionBar.setNavigationMode(android.support.v7.app.ActionBar.NAVIGATION_MODE_TABS);//ActionBarı tablı kullanmak için
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getTabAt(0).setText("Birinci");
+        tabLayout.getTabAt(1).setText("İkinci");
+        tabLayout.getTabAt(2).setText("Ücüncü");
+        /*actionBar.setNavigationMode(android.support.v7.app.ActionBar.NAVIGATION_MODE_TABS);//ActionBarı tablı kullanmak için
 
 
         for (int i = 0; i < tabs.length; i++) { //Tabları ekliyorum
             actionBar.addTab(actionBar.newTab().setText(tabs[i]).setTabListener(this)); //Action Barlara tabları ekledik
-        }
+        }*/
 
 
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() { //tablar arasındaki geçişleri dinleyen listener
+        /*viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() { //tablar arasındaki geçişleri dinleyen listener
 
             @Override
             public void onPageSelected(int position) {
@@ -61,8 +74,12 @@ public class AnaEkran extends AppCompatActivity implements ActionBar.TabListener
             @Override
             public void onPageScrollStateChanged(int arg0) {
             }
-        });
+        });*/
+
+
     }
+
+
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {

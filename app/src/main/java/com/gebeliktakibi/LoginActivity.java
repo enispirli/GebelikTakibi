@@ -1,15 +1,13 @@
 package com.gebeliktakibi;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,7 +20,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button butonSignIn;
     private EditText editTextEmail;
     private EditText editTextPassword;
-    private TextView textViewSignUp;
+    private EditText editTextPasswordAgain;
 
     private FirebaseAuth firebaseAuth;
 
@@ -39,17 +37,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         editTextEmail = (EditText) findViewById(R.id.editTextMail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        textViewSignUp = (TextView) findViewById(R.id.textViewSignup);
         butonSignIn = (Button) findViewById(R.id.buttonSingin);
+        editTextPasswordAgain=(EditText)findViewById(R.id.editTextPasswordAgain);
 
 
         butonSignIn.setOnClickListener(this);
-        textViewSignUp.setOnClickListener(this);
     }
 
     private void userLogin() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
+        String passwordAgain=editTextPasswordAgain.getText().toString().trim();
 
 
         if (TextUtils.isEmpty(email)) {
@@ -63,6 +61,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Toast.makeText(this, "Lütfen şifrenizi giriniz", Toast.LENGTH_SHORT).show();
             //stopping the function execution further
             return;
+        }
+        if(TextUtils.isEmpty(passwordAgain)){
+            Toast.makeText(this, "Lütfen şifrenizi giriniz", Toast.LENGTH_SHORT).show();
         }
 
         progressDialog.setMessage("Bebek yükleniyor... :)");
@@ -85,10 +86,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if (v == butonSignIn) {
             userLogin();
-
-        }
-        if (v == textViewSignUp) {
-            startActivity(new Intent(this, MainActivity.class));
         }
     }
 }
