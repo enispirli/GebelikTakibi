@@ -68,7 +68,7 @@ public class GebelikTarihi extends AppCompatActivity {
 
                 Intent intent=new Intent(GebelikTarihi.this,TabsPager.class);
                 intent.putExtra("gun",gunSayisi);
-                startActivity(intent);
+
             }
 
         });
