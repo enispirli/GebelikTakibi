@@ -1,5 +1,6 @@
 package com.gebeliktakibi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentTransaction;
@@ -8,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Toast;
 
 public class AnaEkran extends AppCompatActivity implements ActionBar.TabListener {
 
@@ -18,6 +20,7 @@ public class AnaEkran extends AppCompatActivity implements ActionBar.TabListener
     private TabsPager adapter;
     private TabLayout tabLayout;
     private Toolbar toolbar;
+    private int haftaSayisi;
     // Tab başlıkları
     private String[] tabs = {"Birinci", "İkinci", "Üçüncü"};
 
@@ -26,14 +29,18 @@ public class AnaEkran extends AppCompatActivity implements ActionBar.TabListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ana_ekran);
 
-        toolbar=(Toolbar)findViewById(R.id.toolBar);
+        toolbar = (Toolbar) findViewById(R.id.toolBar);
 
+        Intent intent = getIntent();
+        int gunSayisi = intent.getIntExtra("gun", 0);
+        int haftaSayisi = (gunSayisi / 7) + 1;
+        Toast.makeText(getApplicationContext(), "Gun Sayisi:" + gunSayisi, Toast.LENGTH_SHORT).show();
         getSupportActionBar().hide();
         //ACTİON BAR İŞLEMLERİ
         //actionBar = getSupportActionBar();
 
         // Action Bar Başlığı saklar
-       //actionBar.setDisplayShowTitleEnabled(false);
+        //actionBar.setDisplayShowTitleEnabled(false);
 
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
 
@@ -41,7 +48,7 @@ public class AnaEkran extends AppCompatActivity implements ActionBar.TabListener
         //TAB ve SWIPE İŞLEMLERİ
 
         viewPager = (ViewPager) findViewById(R.id.pager); //xml de tanımladığımız pager alıyoruz
-        adapter = new TabsPager(getSupportFragmentManager());//TabsPager objesi oluşturuyoruz
+        adapter = new TabsPager(getSupportFragmentManager(), haftaSayisi);//TabsPager objesi oluşturuyoruz
 
         viewPager.setAdapter(adapter); //pager ımızı oluşturduğumuz objeye bağlıyoruz.
         tabLayout.setupWithViewPager(viewPager);
@@ -80,15 +87,15 @@ public class AnaEkran extends AppCompatActivity implements ActionBar.TabListener
     }
 
 
-
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-       // Toast.makeText(getApplicationContext(), "" + tab.getPosition() + ".Tab seçildi", Toast.LENGTH_LONG).show();
-        viewPager.setCurrentItem(tab.getPosition(),true);
+        // Toast.makeText(getApplicationContext(), "" + tab.getPosition() + ".Tab seçildi", Toast.LENGTH_LONG).show();
+        viewPager.setCurrentItem(tab.getPosition(), true);
 
         //tab.getPosition()  //Hangi tabın seçildiğini anlamak için mesala 1. tab seçildiyse 0 değeri döner 2. tabda 1 ,3.tabda 2 değeri döner
         //tab.setText("deneme"); //seçilen tabın string değerini-adını değiştirmeye yarar
         //tab.setIcon(R.drawable.xx)  tab da icon kullanmak için
+
     }
 
     @Override

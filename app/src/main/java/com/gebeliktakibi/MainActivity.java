@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() != null){
-                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                    startActivity(new Intent(MainActivity.this,RegisterActivity.class));
                 }
             }
         };
@@ -147,7 +147,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         fcallbackManager.onActivityResult(requestCode,resultCode,data);
-        fcallbackManager.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
@@ -170,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
-
+                        Toast.makeText(MainActivity.this, "ADFAHgfsgdf", Toast.LENGTH_SHORT).show();
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
@@ -180,8 +179,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     Toast.LENGTH_SHORT).show();
                         }
 
-                        Intent intent=new Intent(getApplicationContext(),AnaEkran.class);
-                        startActivity(intent);
+                       ;
                         // ...
                     }
                 });
@@ -209,18 +207,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         progressDialog.setMessage("Bebek yükleniyor... :)");
         progressDialog.show();
 
-        firebaseAuth.createUserWithEmailAndPassword(email,password)
+        firebaseAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressDialog.dismiss();
                         if(task.isSuccessful()){
-
-                            Toast.makeText(MainActivity.this,"Kayıt başarılı anne adayımız hoşgeldiniz :)",Toast.LENGTH_SHORT).show();
-
+                            startActivity(new Intent(MainActivity.this,GebelikTarihi.class));
                         }
                         else{
-                            Toast.makeText(MainActivity.this,"Kayıt olamadınız, tekrar deneyin :(",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,"Böyle bir kullanıcı bulunmamaktadır.:(",Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -234,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             registerUser();
         }
         if(v==textViewSignin){
-            startActivity(new Intent(this,LoginActivity.class));
+            startActivity(new Intent(this,RegisterActivity.class));
         }
 
     }
@@ -256,7 +252,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("başarılı", "facebook:onSuccess:" + loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken());
                 LoginManager.getInstance().logOut();
-                Intent i = new Intent(MainActivity.this, AnaEkran.class);
+                Intent i = new Intent(MainActivity.this,GebelikTarihi.class);
                // i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
 
