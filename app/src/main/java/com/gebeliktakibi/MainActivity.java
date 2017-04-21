@@ -236,6 +236,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v==textViewSignin){
             startActivity(new Intent(this,LoginActivity.class));
         }
+        if(v==buttonRegister){
+            startActivity(new Intent(this,GebelikTarihi.class));
+        }
 
     }
 

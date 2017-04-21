@@ -16,7 +16,6 @@
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
-
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp" />
 
@@ -28,16 +27,17 @@
             android:id="@+id/textView"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:textColor="#e79d34"
+            android:textColor="#861e64"
             android:textSize="25dp"
             android:textStyle="bold"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="5dp"
+            />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:background="#e79d34"
+            android:background="#861e64"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"></LinearLayout>
 
@@ -45,13 +45,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textViewAdjectiveGelen"
+            android:id="@+id/textViewGelenKelimeler"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="5dp"
             android:textSize="23dp"
             android:gravity="center"
             android:layout_marginTop="5dp"
-            android:textColor="#e79d34" />
+            android:textColor="#861e64" />
 
         <TextView
             android:layout_width="match_parent"
@@ -60,7 +60,7 @@
             android:text="Meaning"
             android:id="@+id/textView3"
             android:layout_marginBottom="5dp"
-            android:textColor="#e79d34"
+            android:textColor="#861e64"
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="25dp"
@@ -70,7 +70,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:background="#e79d34"
+            android:background="#861e64"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"></LinearLayout>
 
@@ -78,12 +78,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textViewAdjectiveAnlami"
+            android:id="@+id/textViewAnlami"
             android:layout_marginBottom="5dp"
             android:textSize="23dp"
             android:gravity="center"
             android:layout_marginTop="5dp"
-            android:textColor="#e79d34" />
+            android:textColor="#861e64" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -95,16 +95,14 @@
             <Button
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:id="@+id/buttonAdjectiveOnceki"
-
+                android:id="@+id/buttonOnceki"
                 android:layout_marginBottom="20dp"
                 android:onClick="onClick" />
 
             <Button
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:id="@+id/buttonAdjectiveSonraki"
-
+                android:id="@+id/buttonSonraki"
                 android:layout_marginLeft="70dp"
                 android:layout_marginBottom="20dp"
                 android:onClick="onClick" />
