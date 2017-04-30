@@ -6,10 +6,10 @@
     android:id="@+id/activity_note"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
     tools:context="com.gebeliktakibi.NoteActivity">
 
 
@@ -19,13 +19,6 @@
         android:background="#CC4949"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="103dp"
-            android:layout_height="80dp"
-            android:padding="5dp"
-            app:srcCompat="@drawable/user" />
-
         <TextView
             android:id="@+id/tvUserName"
             android:layout_width="match_parent"
@@ -34,35 +27,55 @@
             android:layout_marginTop="14dp"
             android:fontFamily="cursive"
             android:padding="10dp"
-            android:text="Seni Beklerken"
+            android:text="Ponçik Notlar"
             android:textSize="20sp"
+            android:textColor="#fff"
 
             android:textStyle="bold" />
     </LinearLayout>
 
     <EditText
         android:id="@+id/etNewNote"
+        android:background="@drawable/notshape"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:ems="10"
-        android:hint="Notunuzu Ekleyin"
+        android:gravity="center"
+        android:hint="Ne hissediyorsunuz?"
         android:inputType="textPersonName"
         android:padding="20dp"
         android:text="" />
 
+    <EditText
+        android:id="@+id/etIcerik"
+        android:layout_width="match_parent"
+        android:background="@drawable/notshape"
+        android:gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Hislerini uzunca anlat "
+        android:inputType="textMultiLine" />
+
     <Button
         android:id="@+id/btnAddNote"
+        android:background="@drawable/shapeiki"
+        android:drawableLeft="@drawable/notepad"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:padding="5dp"
-
+        android:textColor="#CC4949"
         android:text="Bebeğinize Not Yazın" />
 
     <ListView
         android:id="@+id/lvNote"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="7dp"
+        />
 
 </LinearLayout>

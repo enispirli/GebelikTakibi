@@ -20,10 +20,13 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:text="Button"
+        android:text="Gebelik Tarihi Giriniz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnTarih" />
+        android:id="@+id/btnTarih"
+        android:textColor="#8C1B81"
+        android:textSize="15dp"
+        android:background="@drawable/shapeuc"/>
 
 
 </LinearLayout>

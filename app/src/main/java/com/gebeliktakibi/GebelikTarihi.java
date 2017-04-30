@@ -60,9 +60,14 @@ public class GebelikTarihi extends AppCompatActivity {
                     Toast.makeText(GebelikTarihi.this,"Geçerli bir tarih giriniz",Toast.LENGTH_SHORT).show();
                 }
 
-                Intent intent=new Intent(GebelikTarihi.this,AnaEkran.class);
-                intent.putExtra("gun",gunSayisi);
+
+                int hafta=gunSayisi/7;
+
+               String hafats= hafta + "";
+                Intent intent=new Intent(GebelikTarihi.this,BebekHaftasi.class);
+                intent.putExtra("hafta",hafats);
                 startActivity(intent);
+
             }
 
         });

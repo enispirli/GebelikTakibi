@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() != null){
-                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                    startActivity(new Intent(MainActivity.this,RegisterActivity.class));
                 }
             }
         };
@@ -146,19 +146,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        fcallbackManager.onActivityResult(requestCode,resultCode,data);
         fcallbackManager.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
+
+                Intent intent = new Intent(getApplicationContext(), Ekran.class);
+                startActivity(intent);
                 // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = result.getSignInAccount();
-                firebaseAuthWithGoogle(account);
+
             } else {
                 // Google Sign In failed, update UI appropriately
                 // ...
+                GoogleSignInAccount account = result.getSignInAccount();
+                firebaseAuthWithGoogle(account);
             }
         }
     }
@@ -170,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
-
+                        Toast.makeText(MainActivity.this, "Giriş yapılamıyor!", Toast.LENGTH_SHORT).show();
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
@@ -180,13 +183,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     Toast.LENGTH_SHORT).show();
                         }
 
-                        Intent intent=new Intent(getApplicationContext(),AnaEkran.class);
-                        startActivity(intent);
+                       ;
                         // ...
                     }
                 });
     }
-
 
 
     private void registerUser(){
@@ -209,18 +210,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         progressDialog.setMessage("Bebek yükleniyor... :)");
         progressDialog.show();
 
-        firebaseAuth.createUserWithEmailAndPassword(email,password)
+        firebaseAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressDialog.dismiss();
                         if(task.isSuccessful()){
-
-                            Toast.makeText(MainActivity.this,"Kayıt başarılı anne adayımız hoşgeldiniz :)",Toast.LENGTH_SHORT).show();
-
+                            startActivity(new Intent(MainActivity.this,Ekran.class));
                         }
                         else{
-                            Toast.makeText(MainActivity.this,"Kayıt olamadınız, tekrar deneyin :(",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,"Böyle bir kullanıcı bulunmamaktadır.:(",Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -234,10 +233,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             registerUser();
         }
         if(v==textViewSignin){
-            startActivity(new Intent(this,LoginActivity.class));
+            startActivity(new Intent(this,RegisterActivity.class));
         }
         if(v==buttonRegister){
-            startActivity(new Intent(this,GebelikTarihi.class));
+            startActivity(new Intent(this,Ekran.class));
         }
 
     }
@@ -259,27 +258,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("başarılı", "facebook:onSuccess:" + loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken());
                 LoginManager.getInstance().logOut();
-                Intent i = new Intent(MainActivity.this, AnaEkran.class);
+                Intent i = new Intent(MainActivity.this,Ekran.class);
                // i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
-
             }
-
             @Override
             public void onCancel() {
                 Log.d("giriş iptal", "facebook:onCancel");
-
             }
-
             @Override
             public void onError(FacebookException error) {
                 Toast.makeText(getApplicationContext(), "facebooka bağlanırken bir hata oluştu", Toast.LENGTH_SHORT).show();
             }
-
-
         });
     }
-
     private void handleFacebookAccessToken(com.facebook.AccessToken accessToken) {
         AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

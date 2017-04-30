@@ -6,9 +6,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class TabsPager extends FragmentPagerAdapter {
 
-    public TabsPager(FragmentManager fm) {
+    private int haftaSayisi;
 
+    public TabsPager(FragmentManager fm, int haftaSayisi) {
         super(fm);
+        this.haftaSayisi = haftaSayisi;
     }
 
     @Override
@@ -17,7 +19,9 @@ public class TabsPager extends FragmentPagerAdapter {
         switch (arg0) {
             case 0:
                 // BirinciFragment fragment activity
-                return new BirinciFragment();
+                BirinciFragment fragment = new BirinciFragment();
+                fragment.setHaftaSayisi(haftaSayisi);
+                return fragment;
             case 1:
                 // IkinciFragment fragment activity
                 return new IkinciFragment();

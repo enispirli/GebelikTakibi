@@ -21,41 +21,43 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/buttonshape"
+        android:layout_margin="15dp"
         android:layout_above="@+id/buttonOnceki"
         android:layout_below="@+id/textViewGelenKelimeler">
 
         <TextView
-            android:id="@+id/textViewAnlami"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_below="@+id/textViewGelenKelimeler"
             android:marqueeRepeatLimit="marquee_forever"
             android:textColor="#861e64"
+            android:id="@+id/textViewAnlami"
+            android:layout_width="match_parent"
             android:textSize="17dp" />
     </ScrollView>
 
 
     <Button
         android:id="@+id/buttonOnceki"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_alignLeft="@+id/textViewAnlami"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/textViewAnlami"
         android:layout_marginLeft="60dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         android:background="@mipmap/pembeonce"
         android:onClick="onClick" />
 
     <Button
         android:id="@+id/buttonSonraki"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="63dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginBottom="15dp"
         android:layout_toEndOf="@+id/buttonOnceki"
         android:layout_toRightOf="@+id/buttonOnceki"
         android:background="@mipmap/pembeileri"
